@@ -4,13 +4,15 @@ https://github.com/Bkoji1150/hqr-security-group.git
 ```hcl
 
 locals = {
-     ssh = {
-          from        = 22
-          to          = 22
-          protocol    = "tcp"
-          cidr_blocks = ["0.0.0.0/0"]
-        }
+    ssh = 
+    {
+        from        = 22
+        to          = 22
+        protocol    = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
 }
+
 module "Security_module" {
   source = "git::git@github.com:Bkoji1150/hqr-security-group.git"
 
