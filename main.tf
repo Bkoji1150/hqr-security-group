@@ -17,7 +17,7 @@ locals {
 }
 
 module "Security_module" {
-  source = "./Sg" #"git::git@github.com:Bkoji1150/hqr-security-group.git//Sg"
+  source = "./Sg"
 
   vpc_id         = "vpc-b13e8bda"
   ingress        = local.ingress
