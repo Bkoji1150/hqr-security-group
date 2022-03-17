@@ -1,3 +1,3 @@
 output "this" {
-  value = [aws_security_group.this["this"].id]
+  value = [aws_security_group.this["*"].id]
 }
