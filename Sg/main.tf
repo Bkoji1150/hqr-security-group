@@ -1,6 +1,17 @@
 
-resource "aws_security_group" "Project-Omega_sg" {
-  for_each    = var.security_groups
+locals {
+  security_groups = {
+    this = {
+      name        = var.Sg_description
+      description = var.description
+      ingress     = var.ingress
+    }
+
+  }
+}
+
+resource "aws_security_group" "this" {
+  for_each    = local.security_groups
   name        = each.value.name
   description = each.value.description
   vpc_id      = var.vpc_id
@@ -8,7 +19,6 @@ resource "aws_security_group" "Project-Omega_sg" {
   dynamic "ingress" {
     for_each = each.value.ingress
     content {
-
       from_port   = ingress.value.from
       to_port     = ingress.value.to
       protocol    = ingress.value.protocol
@@ -17,7 +27,6 @@ resource "aws_security_group" "Project-Omega_sg" {
     }
 
   }
-
   egress {
     from_port   = 0
     to_port     = 0
@@ -27,6 +36,9 @@ resource "aws_security_group" "Project-Omega_sg" {
   }
 
   tags = {
-    Name = var.name
+    Name = var.Tags
+  }
+  lifecycle {
+    create_before_destroy = true
   }
 }
