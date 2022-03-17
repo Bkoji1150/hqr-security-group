@@ -1,3 +1,3 @@
-output "security_groupid" {
+output "this" {
   value = [aws_security_group.this["this"].id]
 }
