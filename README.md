@@ -18,22 +18,35 @@ locals {
         }
       }
     }
-    rds = {
-      name        = "rds_sg"
-      description = "rds access"
+
+ }
+}
+# TO ADD ROUTS
+
+locals {
+    ssecurity_groups = {
+    public = {
+      name        = "Project-Omega-web-sg"
+      description = "Allow http and ssh inbound traffic"
       ingress = {
+    
         mysql = {
           from        = 3306
           to          = 3306
           protocol    = "tcp"
           cidr_blocks = ["0.0.0.0/0"]
+        },
+         ssh = {
+          from        = 22
+          to          = 22
+          protocol    = "tcp"
+          cidr_blocks = ["0.0.0.0/0"]
         }
+      }
+    }
+
  }
 }
- }
-}
-
-
 module "Security_module" {
   source = "git::git@github.com:Bkoji1150/hqr-security-group.git//Sg"
 
