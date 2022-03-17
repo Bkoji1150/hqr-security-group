@@ -40,3 +40,8 @@ variable "TagName" {
   description = "security group Tag name "
   default     = ""
 }
+
+variable "Sg_description" {
+  description = "security group Name "
+  default     = "SgTest"
+}
