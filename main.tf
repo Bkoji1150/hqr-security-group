@@ -1,5 +1,5 @@
 
-locals {
+/*locals {
   ingress = {
     mysql = {
       from        = 3306
@@ -25,3 +25,4 @@ module "Security_module" {
   Sg_description = var.Sg_description
   Tags           = "test"
 }
+*/
